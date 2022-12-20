@@ -5,7 +5,6 @@ import com.example.PP_3_2_1_Spring_Boot.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -17,12 +16,12 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<User> findAll() {
-        return (List<User>) userDao.findAll();
+        return  userDao.findAll();
     }
 
     @Override
-    public Optional<User> getById(Long id) {
-        return userDao.findById(id);
+    public User getById(Long id) {
+        return userDao.getOne(id);
     }
 
     @Override
