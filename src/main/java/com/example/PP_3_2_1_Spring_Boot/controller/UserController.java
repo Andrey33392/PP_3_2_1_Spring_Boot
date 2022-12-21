@@ -46,29 +46,29 @@ public class UserController {
     @PostMapping("/new")
     public String addUser(@ModelAttribute("adduser") User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "/new";
+            return "users";
         userServiceImp.saveUser(user);
-        return "redirect:/users";
+        return "redirect:users";
     }
 
     @GetMapping("/edit/{id}")
     public String updateUserFrom(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userServiceImp.getById(id));
-        return "/update";
+        return "update";
     }
 
     @PatchMapping("/edit/{id}")
     public String updateUser(@ModelAttribute("user") User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "/update";
-        userServiceImp.saveUser(user);
+            return "update";
+        userServiceImp.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id) {
         userServiceImp.deleteUserById(id);
-        return "redirect:/users";
+        return "redirect:users";
     }
 }
 
