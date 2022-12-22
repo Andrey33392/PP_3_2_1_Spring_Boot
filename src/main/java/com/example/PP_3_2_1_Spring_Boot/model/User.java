@@ -25,18 +25,7 @@ public class User {
     @Column(name = "age")
     private int age;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id.equals(user.id);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
     public User(long id, String name, String lastName, int age) {
         this.id = id;
@@ -90,5 +79,17 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id.equals(user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
